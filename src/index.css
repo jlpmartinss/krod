@@ -4,12 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Democarganobrush";
+  src: url("/assets/Democarganobrush.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body,
 #root,
 .app {
   height: 100%;
   width: 100%;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Democarganobrush", "DM Sans", sans-serif;
   @apply bg-black-100 text-white-100 p-0.5;
 }

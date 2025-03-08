@@ -1,17 +1,40 @@
-const Navbar = () => {
+import { useState } from "react";
+import useMediaQuery from "../hooks/useMediaQuery";
+import { SelectedPage } from "../shared/types";
+import DesktopNavigation from "./DesktopNavigation";
+import { Bars3Icon } from "@heroicons/react/16/solid";
+
+type Props = {
+  selectedPage: SelectedPage;
+  setSelectedPage: (value: SelectedPage) => void;
+  isTopOfPage: boolean;
+};
+
+const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
+  const navbarBackground = isTopOfPage ? "" : "bg-black-100 bg-opacity-80"; // Dynamically set class
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+  const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+
   return (
-    <nav className="absolute top-0 left-0 w-full z-50">
-      <div className="mx-auto w-5/6 flex justify-center items-center h-16 bg-transparent">
-        {["Home", "Bio", "Music", "Shows", "Photos", "Contact", "Store"].map(
-          (tab, index) => (
-            <div
-              key={index}
-              className="px-4 h-full flex items-center justify-center text-sm font-extrabold text-custom uppercase tracking-wider cursor-pointer hover:bg-custom hover:text-white transition-colors duration-300"
+    <nav>
+      <div
+        className={`fixed top-0 left-0 w-full z-50 ${navbarBackground} transition-colors duration-300`}
+      >
+        <div className="mx-auto w-5/6 flex justify-center items-center h-16">
+          {isAboveMediumScreens ? (
+            <DesktopNavigation
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+          ) : (
+            <button
+              className="rounded-full bg-secondary-500 p-2"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
             >
-              {tab}
-            </div>
-          )
-        )}
+              <Bars3Icon className="h-6 w-6 text-white" />
+            </button>
+          )}
+        </div>
       </div>
     </nav>
   );

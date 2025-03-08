@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        custom: ["Democarganobrush", "sans-serif"],
+      },
       keyframes: {
         "fade-up": {
           "0%": {
@@ -39,6 +42,18 @@ export default {
         "white-60": "rgba(255, 255, 255, 0.6)",
         "white-70": "rgba(255, 255, 255, 0.7)",
         "white-90": "rgba(255, 255, 255, 0.9)",
+      },
+      fontSize: {
+        "12xl": "12rem",
+        "20xl": "20rem",
+        "25xl": "25rem",
+        "30xl": "30rem",
+      },
+      screens: {
+        xs: "480px",
+        sm: "768px",
+        md: "1060px",
+        lg: "1310px",
       },
     },
   },

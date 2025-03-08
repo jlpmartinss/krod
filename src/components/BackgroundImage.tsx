@@ -1,6 +1,8 @@
-import backgroundImage from "../assets/krod.png";
+type Props = {
+  backgroundImage: string;
+};
 
-const BackgroundImage = () => {
+const BackgroundImage = ({ backgroundImage }: Props) => {
   return (
     <img
       src={backgroundImage}
